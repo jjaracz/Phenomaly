@@ -1,0 +1,11 @@
+<img [src]="imgSrc" class="image" (load)="loadImg()" #image *ngIf="imgSrc">
+<dl class="spec-list">
+    <dt>Rozmiar:</dt>
+    <dd>{{size}}</dd>
+    <dt>Nazwa:</dt>
+    <dd>{{name}}</dd>
+    <dt *ngIf="widthHeight">Wymiary:</dt>
+    <dd *ngIf="widthHeight">{{widthHeight}}</dd>
+    <dt>Typ:</dt>
+    <dd>{{type}}</dd>
+</dl>

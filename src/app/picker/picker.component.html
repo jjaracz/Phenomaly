@@ -1,0 +1,5 @@
+<input type="file" id="file" class="image-input--file" (change)="fileChanged($event)">
+<div class="input-group">
+    <input type="text" class="image-input--text" [value]="filename" disabled #fileText>
+    <label for="file" class="image-input--btn"><i class="folder icon"></i>Załaduj</label>
+</div>

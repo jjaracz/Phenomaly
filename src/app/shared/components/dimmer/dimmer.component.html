@@ -1,0 +1,5 @@
+<sui-dimmer class="dimmer-sui" [(isDimmed)]="isDimmed" [isClickable]="clickable" [style.pointer-events]="clickable ? 'initial' : 'none'">
+	<div class="dimmer-fade" *ngIf="clickable" (click)="isDimmed = !isDimmed"></div>
+	<div class="ui text loader" *ngIf="dimmerBodyString != ''">{{ dimmerBodyString }}</div>
+	<div #dimmer></div>
+</sui-dimmer>

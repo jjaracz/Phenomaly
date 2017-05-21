@@ -1,0 +1,23 @@
+:host{
+	display: block;
+	width: 100%;
+	top: 0;
+	position: absolute;
+}
+.ui.dimmer{
+	background-color: rgba(55, 52, 103, 0.87);
+}
+.dimmer-fade{
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 0;
+}
+.dimmer-sui{
+	width: 100%;
+	height: 100vh;
+	overflow: hidden;
+	overflow-y: auto;
+}
