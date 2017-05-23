@@ -1,6 +1,6 @@
 import { PickerPopupComponent } from './picker-popup/picker-popup.component';
 import { GlobalService } from '@shared/services';
-import { Component, ComponentFactoryResolver, OnInit } from '@angular/core';
+import { Component, ComponentFactoryResolver, OnInit, ViewChild, ElementRef } from '@angular/core';
 
 @Component({
 	moduleId: module.id,
@@ -10,6 +10,7 @@ import { Component, ComponentFactoryResolver, OnInit } from '@angular/core';
 	entryComponents: [PickerPopupComponent]
 })
 export class PickerComponent implements OnInit {
+	@ViewChild("fileInput") fileInput: ElementRef;
 
 	private filename: string = "";
 	private comp: boolean = false;
@@ -37,7 +38,7 @@ export class PickerComponent implements OnInit {
 			this.glob.emit("dimmer/body/comp/content", res);
 			this.glob.emit("dimmer", true);
 		}
-		reader.readAsText(file);
+		reader.readAsDataURL(file);
 	}
 
 	private formatSizeUnits(bytes) {
@@ -58,6 +59,9 @@ export class PickerComponent implements OnInit {
 	}
 
 	ngOnInit() {
-		this.glob.on("dimmer/body/comp").subscribe((data: any) => this.comp = data.componentType.name == "PickerPopupComponent")
+		this.glob.on("dimmer/body/comp").subscribe((data: any) => this.comp = data.componentType.name == "PickerPopupComponent");
+		this.glob.on("dimmer/close").subscribe(()=> {
+			this.fileInput.nativeElement.value = "";
+		})
 	}
 }

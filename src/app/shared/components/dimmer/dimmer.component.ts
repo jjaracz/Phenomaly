@@ -13,7 +13,7 @@ import { GlobalService } from "@shared/services";
 export class DimmerComponent implements OnInit {
 	@ViewChild('dimmer', { read: ViewContainerRef }) dimmer: ViewContainerRef;
 
-	private isDimmed: boolean = false;
+	private isDimmedVal: boolean = false;
 
 	private dimmerBodyString: string = "";
 	private dimmerRefContent: ComponentRef<any>;
@@ -54,6 +54,15 @@ export class DimmerComponent implements OnInit {
 			clearTimeout(this.timeoutFunc);
 		}
 		this.isDimmed = val
+	}
+
+	private set isDimmed(val: boolean){
+		this.isDimmedVal = val;
+		if(!val) this.glob.emit("dimmer/close", val);
+	}
+
+	private get isDimmed(): boolean{
+		return this.isDimmedVal;
 	}
 
 	private clearDim(){
