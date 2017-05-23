@@ -32,8 +32,6 @@ export class PickerPopupComponent {
 		this.imgSrc = data.src;
 		this.name = data.name;
 		this.type = data.type;
-		console.log(data);
-		console.log(this.img);
 	}
 	
 }

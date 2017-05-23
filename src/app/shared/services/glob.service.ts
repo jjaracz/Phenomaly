@@ -1,5 +1,5 @@
 import { Subject, Observable } from 'rxjs/Rx';
-import {Injectable} from "@angular/core";
+import {Injectable, ComponentRef} from "@angular/core";
 
 @Injectable()
 export class GlobalService {
@@ -14,7 +14,7 @@ export class GlobalService {
 				key: key,
 				value: val
 			})
-			this.shared[key] = val;
+			this.set(key, val);
 			return true;
 		}catch(e){
 			console.log("Something went wrong in Global Update ...");
@@ -32,7 +32,7 @@ export class GlobalService {
 	}
 
 	public on(key:string): Observable<any>{
-		return <Subject<any>>this.subject
+		return this.subject
 			.filter((data: any): boolean => {
 				return data.key == key;
 			}).map((data: any) => {

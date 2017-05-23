@@ -10,14 +10,14 @@ export class CounterPopupComponent {
 	private counter: number = 0;
 	private texts: Array<string> = ["Fizz", "Buzz", "FizzBuzz", ""]
 
-	private getNumber(): number {
+	public getNumber(): number {
 		if(this.counter%15 === 0) return 2;
 		else if (this.counter%5 === 0) return 1;
 		else if (this.counter%3 === 0) return 0;
 		return 3;
 	}
 
-	private getClass(): string {
+	public getClass(): string {
 		switch (this.getNumber()) {
 			case 0:
 				return "btn-yellow"
@@ -30,7 +30,7 @@ export class CounterPopupComponent {
 		}
 	}
 
-	private get text(): string {
+	public get text(): string {
 		return this.texts[this.getNumber()]
 	}
 	
@@ -40,5 +40,13 @@ export class CounterPopupComponent {
 
 	public decrement(): void{
 		this.counter--;
+	}
+
+	public getCounter(): number{
+		return this.counter;
+	}
+
+	public setCounter(val: number){
+		this.counter = val;
 	}
 }

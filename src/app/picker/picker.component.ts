@@ -19,11 +19,11 @@ export class PickerComponent implements OnInit {
 		private cfr: ComponentFactoryResolver
 	) { }
 
-	private fileChanged(e: any) {
+	public fileChanged(e: any) {
 		this.filename = e.target.files[0].name;
 		let file = e.target.files[0];
 
-		let isImage = file.type.match(/image-*/);
+		let isImage = file.type.match(/image*/);
 		let reader = new FileReader();
 
 		reader.onload = (e: any) => {
@@ -37,7 +37,7 @@ export class PickerComponent implements OnInit {
 			this.glob.emit("dimmer/body/comp/content", res);
 			this.glob.emit("dimmer", true);
 		}
-		reader.readAsDataURL(file);
+		reader.readAsText(file);
 	}
 
 	private formatSizeUnits(bytes) {

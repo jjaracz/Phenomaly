@@ -61,6 +61,13 @@ export class DimmerComponent implements OnInit {
 		this.dimmer.clear();
 	}
 
+	public getIsDimmed(): boolean{
+		return this.isDimmed
+	}
+	public getBodyString(): string{
+		return this.dimmerBodyString
+	}
+
 
 	set dimmerBody(factory: any) {
 		//this.componentFactoryResolver.resolveComponentFactory(ProjectComponent)
